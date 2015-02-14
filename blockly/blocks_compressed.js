@@ -31,7 +31,6 @@ Blockly.Blocks.inout_highlow={helpUrl:"http://arduino.cc/en/Reference/Constants"
 Blockly.Blocks.servo_move={helpUrl:"http://www.arduino.cc/playground/ComponentLib/servo",init:function(){this.setColour(190);this.appendDummyInput().appendField("Servo").appendField(new Blockly.FieldImage("http://www.seeedstudio.com/depot/images/product/a991.jpg",64,64)).appendField("PIN#").appendField(new Blockly.FieldDropdown(profile["default"].digital),"PIN");this.appendValueInput("DEGREE","Number").setCheck("Number").setAlign(Blockly.ALIGN_RIGHT).appendField("Degree (0~180)");this.appendValueInput("DELAY_TIME",
 "Number").setCheck("Number").setAlign(Blockly.ALIGN_RIGHT).appendField("Delay");this.setPreviousStatement(!0,null);this.setNextStatement(!0,null);this.setTooltip("move between 0~180 degree")}};
 Blockly.Blocks.servo_read_degrees={helpUrl:"http://www.arduino.cc/playground/ComponentLib/servo",init:function(){this.setColour(190);this.appendDummyInput().appendField("Servo").appendField(new Blockly.FieldImage("http://www.seeedstudio.com/depot/images/product/a991.jpg",64,64)).appendField("PIN#").appendField(new Blockly.FieldDropdown(profile["default"].digital),"PIN");this.appendDummyInput().setAlign(Blockly.ALIGN_RIGHT).appendField("Read Degrees");this.setOutput(!0,"Number");this.setTooltip("return that degree with the last servo move.")}};
-Blockly.Blocks.serial_print={helpUrl:"http://www.arduino.cc/en/Serial/Print",init:function(){this.setColour(230);this.appendValueInput("CONTENT","String").appendField("Serial Print");this.setPreviousStatement(!0,null);this.setNextStatement(!0,null);this.setTooltip("Prints data to the console/serial port as human-readable ASCII text.")}};
 // Copyright 2012 Google Inc.  Apache License 2.0
 Blockly.Blocks.colour={};Blockly.Blocks.colour.HUE=20;Blockly.Blocks.colour_picker={init:function(){this.setHelpUrl(Blockly.Msg.COLOUR_PICKER_HELPURL);this.setColour(Blockly.Blocks.colour.HUE);this.appendDummyInput().appendField(new Blockly.FieldColour("#ff0000"),"COLOUR");this.setOutput(!0,"Colour");this.setTooltip(Blockly.Msg.COLOUR_PICKER_TOOLTIP)}};
 Blockly.Blocks.colour_random={init:function(){this.setHelpUrl(Blockly.Msg.COLOUR_RANDOM_HELPURL);this.setColour(Blockly.Blocks.colour.HUE);this.appendDummyInput().appendField(Blockly.Msg.COLOUR_RANDOM_TITLE);this.setOutput(!0,"Colour");this.setTooltip(Blockly.Msg.COLOUR_RANDOM_TOOLTIP)}};
@@ -39,6 +38,28 @@ Blockly.Blocks.colour_rgb={init:function(){this.setHelpUrl(Blockly.Msg.COLOUR_RG
 this.setOutput(!0,"Colour");this.setTooltip(Blockly.Msg.COLOUR_RGB_TOOLTIP)}};
 Blockly.Blocks.colour_blend={init:function(){this.setHelpUrl(Blockly.Msg.COLOUR_BLEND_HELPURL);this.setColour(Blockly.Blocks.colour.HUE);this.appendValueInput("COLOUR1").setCheck("Colour").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.COLOUR_BLEND_TITLE).appendField(Blockly.Msg.COLOUR_BLEND_COLOUR1);this.appendValueInput("COLOUR2").setCheck("Colour").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.COLOUR_BLEND_COLOUR2);this.appendValueInput("RATIO").setCheck("Number").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.COLOUR_BLEND_RATIO);
 this.setOutput(!0,"Colour");this.setTooltip(Blockly.Msg.COLOUR_BLEND_TOOLTIP)}};/*
+
+ Visual Blocks Editor
+
+ Copyright 2012 Fred Lin.
+ https://github.com/gasolin/BlocklyDuino
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+*/
+Blockly.Blocks.communication={};Blockly.Blocks.communication.HUE=205;Blockly.Blocks.serial_print={helpUrl:"http://www.arduino.cc/en/Serial/Print",init:function(){this.setColour(Blockly.Blocks.communication.HUE);this.appendValueInput("CONTENT","String").appendField("Serial Print");this.setPreviousStatement(!0,null);this.setNextStatement(!0,null);this.setTooltip("Prints data to the console/serial port as human-readable ASCII text.")}};
+Blockly.Blocks.serial_read={init:function(){this.setHelpUrl("http://www.arduino.cc/en/Serial/Read");this.setColour(Blockly.Blocks.communication.HUE);this.appendDummyInput().appendField("Serial Read");this.setOutput(!0,"byte");this.setTooltip("the first byte of incoming serial data available (or -1 if no data is available)")}};
+Blockly.Blocks.serial_available={init:function(){this.setHelpUrl("http://arduino.cc/en/Serial/available");this.setColour(Blockly.Blocks.communication.HUE);this.appendDummyInput().appendField("Serial Available");this.setOutput(!0,"Number");this.setTooltip("Get the number of bytes (characters) available for reading from the serial port.")}};
+Blockly.Blocks.serial_println={init:function(){this.setHelpUrl("http://arduino.cc/en/Serial/Println");this.setColour(Blockly.Blocks.communication.HUE);this.appendValueInput("Val").setCheck("String").appendField("Serial Println");this.setPreviousStatement(!0);this.setNextStatement(!0);this.setTooltip("Prints data to the serial port as human-readable ASCII text followed by a carriage return character and a newline characte.")}};/*
 
  Visual Blocks Editor
 
@@ -170,6 +191,7 @@ MODE:Blockly.Msg.MATH_ONLIST_TOOLTIP_MODE,STD_DEV:Blockly.Msg.MATH_ONLIST_TOOLTI
 Blockly.Blocks.math_constrain={init:function(){this.setHelpUrl(Blockly.Msg.MATH_CONSTRAIN_HELPURL);this.setColour(Blockly.Blocks.math.HUE);this.setOutput(!0,"Number");this.interpolateMsg(Blockly.Msg.MATH_CONSTRAIN_TITLE,["VALUE","Number",Blockly.ALIGN_RIGHT],["LOW","Number",Blockly.ALIGN_RIGHT],["HIGH","Number",Blockly.ALIGN_RIGHT],Blockly.ALIGN_RIGHT);this.setInputsInline(!0);this.setTooltip(Blockly.Msg.MATH_CONSTRAIN_TOOLTIP)}};
 Blockly.Blocks.math_random_int={init:function(){this.setHelpUrl(Blockly.Msg.MATH_RANDOM_INT_HELPURL);this.setColour(Blockly.Blocks.math.HUE);this.setOutput(!0,"Number");this.interpolateMsg(Blockly.Msg.MATH_RANDOM_INT_TITLE,["FROM","Number",Blockly.ALIGN_RIGHT],["TO","Number",Blockly.ALIGN_RIGHT],Blockly.ALIGN_RIGHT);this.setInputsInline(!0);this.setTooltip(Blockly.Msg.MATH_RANDOM_INT_TOOLTIP)}};
 Blockly.Blocks.math_random_float={init:function(){this.setHelpUrl(Blockly.Msg.MATH_RANDOM_FLOAT_HELPURL);this.setColour(Blockly.Blocks.math.HUE);this.setOutput(!0,"Number");this.appendDummyInput().appendField(Blockly.Msg.MATH_RANDOM_FLOAT_TITLE_RANDOM);this.setTooltip(Blockly.Msg.MATH_RANDOM_FLOAT_TOOLTIP)}};
+Blockly.Blocks.math_random_max_min={init:function(){this.setHelpUrl("http://arduino.cc/en/Reference/Random");this.setColour(Blockly.Blocks.math.HUE);this.appendDummyInput().appendField("random");this.appendValueInput("MAX").setCheck("Number").setAlign(Blockly.ALIGN_RIGHT).appendField("Max");this.appendValueInput("MIN").setCheck("Number").setAlign(Blockly.ALIGN_RIGHT).appendField("Min");this.setInputsInline(!0);this.setOutput(!0,"Number");this.setTooltip("The random function generates pseudo-random numbers.")}};
 // Copyright 2012 Google Inc.  Apache License 2.0
 Blockly.Blocks.procedures={};Blockly.Blocks.procedures.HUE=290;
 Blockly.Blocks.procedures_defnoreturn={init:function(){this.setHelpUrl(Blockly.Msg.PROCEDURES_DEFNORETURN_HELPURL);this.setColour(Blockly.Blocks.procedures.HUE);var a=Blockly.Procedures.findLegalName(Blockly.Msg.PROCEDURES_DEFNORETURN_PROCEDURE,this);this.appendDummyInput().appendField(Blockly.Msg.PROCEDURES_DEFNORETURN_TITLE).appendField(new Blockly.FieldTextInput(a,Blockly.Procedures.rename),"NAME").appendField("","PARAMS");this.setMutator(new Blockly.Mutator(["procedures_mutatorarg"]));this.setTooltip(Blockly.Msg.PROCEDURES_DEFNORETURN_TOOLTIP);
@@ -226,7 +248,29 @@ Blockly.Blocks.text_print={init:function(){this.setHelpUrl(Blockly.Msg.TEXT_PRIN
 Blockly.Blocks.text_prompt={init:function(){var a=[[Blockly.Msg.TEXT_PROMPT_TYPE_TEXT,"TEXT"],[Blockly.Msg.TEXT_PROMPT_TYPE_NUMBER,"NUMBER"]],b=this;this.setHelpUrl(Blockly.Msg.TEXT_PROMPT_HELPURL);this.setColour(Blockly.Blocks.texts.HUE);a=new Blockly.FieldDropdown(a,function(a){"NUMBER"==a?b.changeOutput("Number"):b.changeOutput("String")});this.appendDummyInput().appendField(a,"TYPE").appendField(this.newQuote_(!0)).appendField(new Blockly.FieldTextInput(""),"TEXT").appendField(this.newQuote_(!1));
 this.setOutput(!0,"String");b=this;this.setTooltip(function(){return"TEXT"==b.getFieldValue("TYPE")?Blockly.Msg.TEXT_PROMPT_TOOLTIP_TEXT:Blockly.Msg.TEXT_PROMPT_TOOLTIP_NUMBER})},newQuote_:Blockly.Blocks.text.newQuote_};
 Blockly.Blocks.text_prompt_ext={init:function(){var a=[[Blockly.Msg.TEXT_PROMPT_TYPE_TEXT,"TEXT"],[Blockly.Msg.TEXT_PROMPT_TYPE_NUMBER,"NUMBER"]],b=this;this.setHelpUrl(Blockly.Msg.TEXT_PROMPT_HELPURL);this.setColour(Blockly.Blocks.texts.HUE);a=new Blockly.FieldDropdown(a,function(a){"NUMBER"==a?b.changeOutput("Number"):b.changeOutput("String")});this.appendValueInput("TEXT").appendField(a,"TYPE");this.setOutput(!0,"String");b=this;this.setTooltip(function(){return"TEXT"==b.getFieldValue("TYPE")?
-Blockly.Msg.TEXT_PROMPT_TOOLTIP_TEXT:Blockly.Msg.TEXT_PROMPT_TOOLTIP_NUMBER})}};
+Blockly.Msg.TEXT_PROMPT_TOOLTIP_TEXT:Blockly.Msg.TEXT_PROMPT_TOOLTIP_NUMBER})}};/*
+
+ Visual Blocks Editor
+
+ Copyright 2012 Fred Lin.
+ https://github.com/gasolin/BlocklyDuino
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+*/
+Blockly.Blocks.times={};Blockly.Blocks.times.HUE=125;Blockly.Blocks.delay={init:function(){this.setHelpUrl("http://arduino.cc/en/Reference/delay");this.setColour(Blockly.Blocks.times.HUE);this.appendValueInput("DELAY_TIME").setCheck("Number").appendField("delay");this.setPreviousStatement(!0);this.setNextStatement(!0);this.setTooltip("Delay specific time")}};
+Blockly.Blocks.micros={init:function(){this.setHelpUrl("hhttp://arduino.cc/en/Reference/Micros");this.setColour(Blockly.Blocks.times.HUE);this.appendValueInput("DELAY_TIME").setCheck("Number").appendField("micros");this.setPreviousStatement(!0);this.setNextStatement(!0);this.setTooltip("Returns the number of microseconds since the Arduino board began running the current program. ")}};
+Blockly.Blocks.delayMicroseconds={init:function(){this.setHelpUrl("http://arduino.cc/en/Reference/DelayMicroseconds");this.setColour(Blockly.Blocks.times.HUE);this.appendValueInput("DELAY_TIME").setCheck("Number").appendField("delayMicroseconds");this.setPreviousStatement(!0);this.setNextStatement(!0);this.setTooltip("Pauses the program for the amount of time (in microseconds) specified as parameter.")}};
+Blockly.Blocks.millis={init:function(){this.setHelpUrl("hhttp://arduino.cc/en/Reference/Millis");this.setColour(Blockly.Blocks.times.HUE);this.appendValueInput("DELAY_TIME").setCheck("Number").appendField("millis");this.setPreviousStatement(!0);this.setNextStatement(!0);this.setTooltip("Returns the number of milliseconds since the Arduino board began running the current program.")}};
 // Copyright 2012 Google Inc.  Apache License 2.0
 Blockly.Blocks.variables={};Blockly.Blocks.variables.HUE=330;
 Blockly.Blocks.variables_declare={helpUrl:Blockly.LANG_VARIABLES_SET_HELPURL,init:function(){this.setColour(Blockly.Blocks.variables.HUE);this.appendValueInput("VALUE",null).appendField("Declare").appendField(new Blockly.FieldVariable(Blockly.LANG_VARIABLES_SET_ITEM),"VAR").appendField("as").appendField(new Blockly.FieldDropdown([["Number","int"]]),"TYPE").appendField("value");this.setPreviousStatement(!0);this.setNextStatement(!0);this.setTooltip("")},getVars:function(){return[this.getFieldValue("VAR")]},

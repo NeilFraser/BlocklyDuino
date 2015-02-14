@@ -432,3 +432,23 @@ Blockly.Blocks['math_random_float'] = {
     this.setTooltip(Blockly.Msg.MATH_RANDOM_FLOAT_TOOLTIP);
   }
 };
+
+Blockly.Blocks['math_random_max_min'] = {
+  init: function() {
+    this.setHelpUrl('http://arduino.cc/en/Reference/Random');
+    this.setColour(Blockly.Blocks.math.HUE);
+    this.appendDummyInput()
+    .appendField("random");
+    this.appendValueInput("MAX")
+    .setCheck("Number")
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField("Max");
+    this.appendValueInput("MIN")
+    .setCheck("Number")
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField("Min");
+    this.setInputsInline(true);
+    this.setOutput(true, "Number");
+    this.setTooltip('The random function generates pseudo-random numbers.');
+  }
+};

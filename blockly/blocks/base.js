@@ -56,7 +56,7 @@ Blockly.Blocks['base_map'] = {
         .appendField("value to [0-")
         .setCheck('Number');
     this.appendDummyInput()
-	      .appendField("]");
+        .appendField("]");
     this.setInputsInline(true);
     this.setOutput(true);
     this.setTooltip('Re-maps a number from [0-1024] to another.');
@@ -68,8 +68,8 @@ Blockly.Blocks['inout_buildin_led'] = {
    init: function() {
      this.setColour(190);
      this.appendDummyInput()
-	       .appendField("Build-in LED Stat")
-	       .appendField(new Blockly.FieldDropdown([["HIGH", "HIGH"], ["LOW", "LOW"]]), "STAT");
+         .appendField("Build-in LED Stat")
+         .appendField(new Blockly.FieldDropdown([["HIGH", "HIGH"], ["LOW", "LOW"]]), "STAT");
      this.setPreviousStatement(true, null);
      this.setNextStatement(true, null);
      this.setTooltip('light or off the build-in LED');
@@ -81,10 +81,10 @@ Blockly.Blocks['inout_digital_write'] = {
   init: function() {
     this.setColour(230);
     this.appendDummyInput()
-	      .appendField("DigitalWrite PIN#")
-	      .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN")
-      	.appendField("Stat")
-      	.appendField(new Blockly.FieldDropdown([["HIGH", "HIGH"], ["LOW", "LOW"]]), "STAT");
+        .appendField("DigitalWrite PIN#")
+        .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN")
+        .appendField("Stat")
+        .appendField(new Blockly.FieldDropdown([["HIGH", "HIGH"], ["LOW", "LOW"]]), "STAT");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip('Write digital value to a specific Port');
@@ -96,8 +96,8 @@ Blockly.Blocks['inout_digital_read'] = {
   init: function() {
     this.setColour(230);
     this.appendDummyInput()
-	      .appendField("DigitalRead PIN#")
-	      .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN");
+        .appendField("DigitalRead PIN#")
+        .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN");
     this.setOutput(true, 'Boolean');
     this.setTooltip('');
   }
@@ -182,17 +182,5 @@ Blockly.Blocks['servo_read_degrees'] = {
         .appendField("Read Degrees")
     this.setOutput(true, 'Number');
     this.setTooltip('return that degree with the last servo move.');
-  }
-};
-
-Blockly.Blocks['serial_print'] = {
-  helpUrl: 'http://www.arduino.cc/en/Serial/Print',
-  init: function() {
-    this.setColour(230);
-    this.appendValueInput("CONTENT", 'String')
-        .appendField("Serial Print");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setTooltip('Prints data to the console/serial port as human-readable ASCII text.');
   }
 };
